@@ -16,7 +16,7 @@ export default function Home() {
   );
   const { data: projects, loading } = useCollection(projectsCollection);
 
-  const validProjects = projects?.filter(p => p.thumbnailUrl) || [];
+  const validProjects = projects?.filter(p => p.thumbnailUrl).sort((a, b) => a.order - b.order) || [];
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-body">
