@@ -1,0 +1,22 @@
+{
+  "placeholderImages": [
+    {
+      "id": "project-1",
+      "description": "A concept for a futuristic user interface, focusing on clean lines and intuitive navigation.",
+      "imageUrl": "https://res.cloudinary.com/dsu5cb0ny/image/upload/v1765345520/blog_images/bq9x3xigrppfo1zbler4.jpg",
+      "imageHint": "futuristic interface"
+    },
+    {
+      "id": "project-2",
+      "description": "Complete branding and identity design for a new technology startup in the green energy sector.",
+      "imageUrl": "https://res.cloudinary.com/dsu5cb0ny/image/upload/v1765345521/blog_images/w50if2wj2c5qfzgqnsj1.jpg",
+      "imageHint": "tech branding"
+    },
+    {
+      "id": "project-3",
+      "description": "An e-commerce platform designed for a luxury fashion brand, featuring a minimalist and modern aesthetic.",
+      "imageUrl": "https://res.cloudinary.com/dsu5cb0ny/image/upload/v1765345521/blog_images/w60qfo7z5f7xghyqntzm.jpg",
+      "imageHint": "ecommerce modern"
+    }
+  ]
+}
