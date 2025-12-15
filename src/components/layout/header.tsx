@@ -1,4 +1,3 @@
-
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -97,9 +96,9 @@ export default function Header() {
                     <Image
                       src="/logo.png"
                       alt="Nexon Inc"
-                      width={120}
-                      height={40}
-                      className="h-8 w-auto"
+                      width={150}
+                      height={50}
+                      className="h-10 w-auto"
                     />
                   </Link>
                 </div>
@@ -288,9 +287,9 @@ export default function Header() {
             <Image
               src="/logo.png"
               alt="Nexon Inc"
-              width={120}
-              height={40}
-              className="h-8 w-auto"
+              width={150}
+              height={50}
+              className="h-10 w-auto"
             />
           </Link>
         </div>
@@ -302,4 +301,3 @@ export default function Header() {
     </header>
   );
 }
-
