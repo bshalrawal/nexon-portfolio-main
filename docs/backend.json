@@ -1,0 +1,191 @@
+
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email"
+        }
+      },
+      "required": [
+        "email"
+      ]
+    },
+    "PortfolioItem": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "PortfolioItem",
+      "type": "object",
+      "description": "Represents a single portfolio item.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the portfolio item."
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the portfolio project."
+        },
+        "category": {
+          "type": "string",
+          "description": "The category of the project (e.g., website, branding, seo)."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL for the main project image.",
+          "format": "uri"
+        },
+        "mobileImageUrl": {
+          "type": "string",
+          "description": "URL for the mobile view of the project image (optional).",
+          "format": "uri"
+        },
+        "link": {
+          "type": "string",
+          "description": "URL to the live project or case study.",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "category",
+        "imageUrl",
+        "link"
+      ]
+    },
+    "Post": {
+      "title": "Post",
+      "type": "object",
+      "description": "Represents a single blog post.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "imageUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "slug",
+        "content"
+      ]
+    },
+    "Lead": {
+      "title": "Lead",
+      "type": "object",
+      "description": "Represents a lead from the contact form.",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "company": {
+          "type": "string"
+        },
+        "requirements": {
+          "type": "string"
+        },
+        "submittedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["new", "contacted", "closed"]
+        }
+      },
+      "required": ["name", "email", "requirements", "submittedAt", "status"]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/users/{userId}",
+        "definition": {
+          "entityName": "User",
+          "schema": {
+            "$ref": "#/backend/entities/User"
+          },
+          "description": "Stores user profile information for admin access."
+        }
+      },
+      {
+        "path": "/portfolio_items/{itemId}",
+        "definition": {
+          "entityName": "PortfolioItem",
+          "schema": {
+            "$ref": "#/backend/entities/PortfolioItem"
+          },
+          "description": "Stores individual portfolio projects.",
+          "params": [
+            {
+              "name": "itemId",
+              "description": "Unique identifier for the portfolio item."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/posts/{postId}",
+        "definition": {
+          "entityName": "Post",
+          "schema": {
+            "$ref": "#/backend/entities/Post"
+          },
+          "description": "Stores blog posts.",
+          "params": [
+            {
+              "name": "postId",
+              "description": "Unique identifier for the post."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/leads/{leadId}",
+        "definition": {
+          "entityName": "Lead",
+          "schema": {
+            "$ref": "#/backend/entities/Lead"
+          },
+          "description": "Stores contact form submissions."
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure is designed to support an admin panel for a portfolio website. The `users` collection manages admin accounts for secure access. The `portfolio_items` collection stores all the portfolio projects. A `posts` collection is added for blog functionality. A `leads` collection is added to store submissions from the contact form."
+  }
+}

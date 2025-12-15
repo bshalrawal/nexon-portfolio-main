@@ -1,0 +1,30 @@
+
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Default to denying all access.
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+
+    // Allow public read access to portfolio and post images.
+    match /portfolio_images/{fileName} {
+      allow read: if true;
+      // Allow write access only for authenticated users.
+      // Validate that the uploaded file is an image and under 5MB.
+      allow write: if request.auth != null
+                    && request.resource.size < 5 * 1024 * 1024
+                    && request.resource.contentType.matches('image/.*');
+    }
+
+    match /post_images/{fileName} {
+      allow read: if true;
+      // Allow write access only for authenticated users.
+      // Validate that the uploaded file is an image and under 5MB.
+      allow write: if request.auth != null
+                    && request.resource.size < 5 * 1024 * 1024
+                    && request.resource.contentType.matches('image/.*');
+    }
+  }
+}

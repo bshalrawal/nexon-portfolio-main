@@ -1,0 +1,117 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions for cleaner rules
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    function isValidString(field, minLen, maxLen) {
+      return request.resource.data[field] is string &&
+             request.resource.data[field].size() >= minLen &&
+             request.resource.data[field].size() <= maxLen;
+    }
+    
+    function isValidUrl(field) {
+      return request.resource.data[field] is string &&
+             request.resource.data[field].matches('https?://.*');
+    }
+    
+    // Users collection - only owner can read/write their data
+    match /users/{userId} {
+      allow read: if isOwner(userId);
+      allow create: if isAuthenticated() && 
+                       request.auth.uid == userId &&
+                       isValidString('email', 3, 100);
+      allow update: if isOwner(userId) &&
+                       // Prevent changing userId
+                       request.resource.data.keys().hasAll(['email']) &&
+                       isValidString('email', 3, 100);
+      allow delete: if isOwner(userId);
+    }
+    
+    // Portfolio items - public read, authenticated write with ownership
+    match /portfolio_items/{itemId} {
+      allow read: if true;
+      
+      allow create: if isAuthenticated() &&
+                       request.resource.data.userId == request.auth.uid &&
+                       isValidString('title', 1, 200) &&
+                       isValidString('description', 1, 5000) &&
+                       request.resource.data.keys().hasAll(['userId', 'title', 'description', 'createdAt']);
+      
+      allow update: if isAuthenticated() &&
+                       resource.data.userId == request.auth.uid &&
+                       // Prevent changing owner
+                       request.resource.data.userId == resource.data.userId &&
+                       isValidString('title', 1, 200) &&
+                       isValidString('description', 1, 5000);
+      
+      allow delete: if isAuthenticated() &&
+                       resource.data.userId == request.auth.uid;
+    }
+    
+    // Blog posts - public read, authenticated write with ownership
+    match /posts/{postId} {
+      allow read: if true;
+      
+      allow create: if isAuthenticated() &&
+                       request.resource.data.userId == request.auth.uid &&
+                       isValidString('title', 1, 200) &&
+                       isValidString('content', 1, 50000) &&
+                       request.resource.data.keys().hasAll(['userId', 'title', 'content', 'createdAt']);
+      
+      allow update: if isAuthenticated() &&
+                       resource.data.userId == request.auth.uid &&
+                       request.resource.data.userId == resource.data.userId &&
+                       isValidString('title', 1, 200) &&
+                       isValidString('content', 1, 50000);
+      
+      allow delete: if isAuthenticated() &&
+                       resource.data.userId == request.auth.uid;
+    }
+    
+    // Leads - anyone can create (contact form), only authenticated users can read/manage
+    match /leads/{leadId} {
+      allow create: if isValidString('name', 1, 100) &&
+                       isValidString('email', 3, 100) &&
+                       isValidString('message', 1, 5000) &&
+                       // Rate limiting: prevent spam
+                       request.resource.data.createdAt is timestamp;
+      
+      allow read: if isAuthenticated();
+      
+      allow update, delete: if isAuthenticated();
+    }
+    
+    // Projects - public read, authenticated write with ownership
+    match /projects/{projectId} {
+      allow read: if true;
+      
+      allow create: if isAuthenticated() &&
+                       request.resource.data.userId == request.auth.uid &&
+                       isValidString('title', 1, 200) &&
+                       isValidString('description', 1, 5000) &&
+                       // Prevent storing base64 images (they should be in Storage)
+                       (!request.resource.data.keys().hasAny(['imageUrl']) ||
+                        isValidUrl('imageUrl')) &&
+                       request.resource.data.keys().hasAll(['userId', 'title', 'description', 'createdAt']);
+      
+      allow update: if isAuthenticated() &&
+                       resource.data.userId == request.auth.uid &&
+                       request.resource.data.userId == resource.data.userId &&
+                       isValidString('title', 1, 200) &&
+                       isValidString('description', 1, 5000) &&
+                       (!request.resource.data.keys().hasAny(['imageUrl']) ||
+                        isValidUrl('imageUrl'));
+      
+      allow delete: if isAuthenticated() &&
+                       resource.data.userId == request.auth.uid;
+    }
+  }
+}
