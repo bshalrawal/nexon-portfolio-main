@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 {
   "entities": {
@@ -187,5 +188,48 @@
       }
     ],
     "reasoning": "The Firestore structure is designed to support an admin panel for a portfolio website. The `users` collection manages admin accounts for secure access. The `portfolio_items` collection stores all the portfolio projects. A `posts` collection is added for blog functionality. A `leads` collection is added to store submissions from the contact form."
+=======
+{
+  "entities": {
+    "project": {
+      "title": "Project",
+      "description": "Represents a project in the portfolio.",
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string",
+          "description": "The category of the project."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the project."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL of the project's image."
+        },
+        "imageHint": {
+          "type": "string",
+          "description": "A hint for AI image generation."
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time"
+        }
+      },
+      "required": ["category", "description", "imageUrl", "createdAt"]
+    }
+  },
+  "auth": {
+    "providers": ["google.com", "password"]
+  },
+  "firestore": {
+    "/portfolio_items/{itemId}": {
+      "schema": {
+        "$ref": "#/backend/entities/project"
+      },
+      "description": "Stores individual portfolio item documents."
+    }
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
   }
 }

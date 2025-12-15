@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use client';
 import { getAuth, type User } from 'firebase/auth';
 
@@ -121,3 +122,29 @@ export class FirestorePermissionError extends Error {
     this.request = requestObject;
   }
 }
+=======
+export type SecurityRuleContext = {
+    path: string;
+    operation: 'get' | 'list' | 'create' | 'update' | 'delete' | 'write';
+    requestResourceData?: any;
+  };
+  
+  export class FirestorePermissionError extends Error {
+    public readonly context: SecurityRuleContext;
+  
+    constructor(context: SecurityRuleContext) {
+      const prettyJson = JSON.stringify(context, null, 2);
+      super(
+        `Firestore Security Rules blocked a request at '${context.path}'.\nContext: ${prettyJson}`
+      );
+      this.name = 'FirestorePermissionError';
+      this.context = context;
+  
+      // This is to ensure the stack trace is captured correctly
+      if (Error.captureStackTrace) {
+        Error.captureStackTrace(this, FirestorePermissionError);
+      }
+    }
+  }
+  
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3

@@ -40,6 +40,10 @@ next-env.d.ts
 .genkit/*
 .env
 
+<<<<<<< HEAD
 # firebase
+=======
+# firebasegit
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
 firebase-debug.log
 firestore-debug.log

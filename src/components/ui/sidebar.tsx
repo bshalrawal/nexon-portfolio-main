@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
 "use client"
 
 import * as React from "react"
@@ -11,7 +14,11 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
+<<<<<<< HEAD
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+=======
+import { Sheet, SheetContent } from "@/components/ui/sheet"
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
 import { Skeleton } from "@/components/ui/skeleton"
 import {
   Tooltip,
@@ -142,7 +149,11 @@ const SidebarProvider = React.forwardRef<
               } as React.CSSProperties
             }
             className={cn(
+<<<<<<< HEAD
               "group/sidebar-wrapper flex min-h-svh w-full has-[[data-variant=inset]]:bg-white",
+=======
+              "group/sidebar-wrapper flex min-h-svh w-full has-[[data-variant=inset]]:bg-sidebar",
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
               className
             )}
             ref={ref}
@@ -182,7 +193,11 @@ const Sidebar = React.forwardRef<
       return (
         <div
           className={cn(
+<<<<<<< HEAD
             "flex h-full w-[--sidebar-width] flex-col bg-white text-sidebar-foreground",
+=======
+            "flex h-full w-[--sidebar-width] flex-col bg-sidebar text-sidebar-foreground",
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
             className
           )}
           ref={ref}
@@ -199,7 +214,11 @@ const Sidebar = React.forwardRef<
           <SheetContent
             data-sidebar="sidebar"
             data-mobile="true"
+<<<<<<< HEAD
             className="w-[--sidebar-width] bg-white p-0 text-sidebar-foreground [&>button]:hidden"
+=======
+            className="w-[--sidebar-width] bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
             style={
               {
                 "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
@@ -207,12 +226,15 @@ const Sidebar = React.forwardRef<
             }
             side={side}
           >
+<<<<<<< HEAD
             <SheetHeader className="sr-only">
               <SheetTitle>Sidebar Menu</SheetTitle>
               <SheetDescription>
                 A list of navigation links for the admin dashboard.
               </SheetDescription>
             </SheetHeader>
+=======
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
             <div className="flex h-full w-full flex-col">{children}</div>
           </SheetContent>
         </Sheet>
@@ -255,7 +277,11 @@ const Sidebar = React.forwardRef<
         >
           <div
             data-sidebar="sidebar"
+<<<<<<< HEAD
             className="flex h-full w-full flex-col bg-white group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow"
+=======
+            className="flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow"
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
           >
             {children}
           </div>
@@ -310,7 +336,11 @@ const SidebarRail = React.forwardRef<
         "absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] hover:after:bg-sidebar-border group-data-[side=left]:-right-4 group-data-[side=right]:left-0 sm:flex",
         "[[data-side=left]_&]:cursor-w-resize [[data-side=right]_&]:cursor-e-resize",
         "[[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize",
+<<<<<<< HEAD
         "group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full group-data-[collapsible=offcanvas]:hover:bg-white",
+=======
+        "group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full group-data-[collapsible=offcanvas]:hover:bg-sidebar",
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
         "[[data-side=left][data-collapsible=offcanvas]_&]:-right-2",
         "[[data-side=right][data-collapsible=offcanvas]_&]:-left-2",
         className
@@ -768,5 +798,8 @@ export {
   SidebarTrigger,
   useSidebar,
 }
+<<<<<<< HEAD
 
     
+=======
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3

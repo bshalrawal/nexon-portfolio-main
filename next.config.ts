@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 
 import type { NextConfig } from 'next';
+=======
+import type {NextConfig} from 'next';
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -29,6 +33,7 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+<<<<<<< HEAD
 
       {
         protocol: 'https',
@@ -42,11 +47,14 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+=======
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
       {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
         port: '',
         pathname: '/**',
+<<<<<<< HEAD
       }
     ],
   },
@@ -55,6 +63,11 @@ const nextConfig: NextConfig = {
     //     "https://6000-firebase-studio-1762781607376.cluster-euie3bjlbvhliv5fpqv5ofgi46.cloudworkstations.dev",
     // ]
   }
+=======
+      },
+    ],
+  },
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
 };
 
 export default nextConfig;

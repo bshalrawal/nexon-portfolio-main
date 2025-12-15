@@ -1,5 +1,6 @@
 'use client';
 
+<<<<<<< HEAD
 import React, { DependencyList, createContext, useContext, ReactNode, useMemo, useState, useEffect } from 'react';
 import { FirebaseApp } from 'firebase/app';
 import { Firestore } from 'firebase/firestore';
@@ -161,3 +162,48 @@ export function useMemoFirebase<T>(factory: () => T, deps: DependencyList): T | 
 }
 
 
+=======
+import { createContext, useContext } from 'react';
+import type { FirebaseApp } from 'firebase/app';
+import type { Auth } from 'firebase/auth';
+import type { Firestore } from 'firebase/firestore';
+import { FirebaseErrorListener } from '@/components/FirebaseErrorListener';
+
+type FirebaseContextType = {
+  app: FirebaseApp | null;
+  auth: Auth | null;
+  firestore: Firestore | null;
+};
+
+const FirebaseContext = createContext<FirebaseContextType>({
+  app: null,
+  auth: null,
+  firestore: null,
+});
+
+type FirebaseProviderProps = {
+  children: React.ReactNode;
+  app: FirebaseApp;
+  auth: Auth;
+  firestore: Firestore;
+};
+
+export function FirebaseProvider({
+  children,
+  app,
+  auth,
+  firestore,
+}: FirebaseProviderProps) {
+  return (
+    <FirebaseContext.Provider value={{ app, auth, firestore }}>
+      {children}
+      <FirebaseErrorListener />
+    </FirebaseContext.Provider>
+  );
+}
+
+export const useFirebase = () => useContext(FirebaseContext);
+export const useFirebaseApp = () => useContext(FirebaseContext)?.app;
+export const useAuth = () => useContext(FirebaseContext)?.auth;
+export const useFirestore = () => useContext(FirebaseContext)?.firestore;
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3

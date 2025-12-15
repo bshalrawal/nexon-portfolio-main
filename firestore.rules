@@ -35,6 +35,7 @@ service cloud.firestore {
       allow delete: if isOwner(userId);
     }
     
+<<<<<<< HEAD
     // Portfolio items - public read, authenticated write with ownership
     match /portfolio_items/{itemId} {
       allow read: if true;
@@ -56,6 +57,8 @@ service cloud.firestore {
                        resource.data.userId == request.auth.uid;
     }
     
+=======
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
     // Blog posts - public read, authenticated write with ownership
     match /posts/{postId} {
       allow read: if true;
@@ -89,6 +92,7 @@ service cloud.firestore {
       allow update, delete: if isAuthenticated();
     }
     
+<<<<<<< HEAD
     // Projects - public read, authenticated write with ownership
     match /projects/{projectId} {
       allow read: if true;
@@ -115,3 +119,13 @@ service cloud.firestore {
     }
   }
 }
+=======
+    // Portfolio items - public read, authenticated write with ownership
+    match /portfolio_items/{itemId} {
+      allow read: if true;
+      allow create: if isAuthenticated();
+      allow update, delete: if isAuthenticated() && resource.data.userId == request.auth.uid;
+    }
+  }
+}
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3

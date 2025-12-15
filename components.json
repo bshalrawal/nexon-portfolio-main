@@ -10,7 +10,10 @@
     "cssVariables": true,
     "prefix": ""
   },
+<<<<<<< HEAD
   "iconLibrary": "lucide",
+=======
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
   "aliases": {
     "components": "@/components",
     "utils": "@/lib/utils",
@@ -18,7 +21,12 @@
     "lib": "@/lib",
     "hooks": "@/hooks"
   },
+<<<<<<< HEAD
   "registries": {
     "@react-bits": "https://reactbits.dev/r/{name}.json"
   }
 }
+=======
+  "iconLibrary": "lucide"
+}
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3

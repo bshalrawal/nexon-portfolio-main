@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import type { Config } from 'tailwindcss';
+=======
+import type {Config} from 'tailwindcss';
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
 
 export default {
   darkMode: ['class'],
@@ -8,6 +12,7 @@ export default {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+<<<<<<< HEAD
     container: {
       center: true,
       padding: '2rem',
@@ -37,45 +42,80 @@ export default {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
 
+=======
+    extend: {
+      fontFamily: {
+        body: ['Inter', 'sans-serif'],
+        headline: ['Space Grotesk', 'sans-serif'],
+        code: ['monospace'],
+      },
+      colors: {
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
         popover: {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))',
         },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
         },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
         },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
         muted: {
           DEFAULT: 'hsl(var(--muted))',
           foreground: 'hsl(var(--muted-foreground))',
         },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
         },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))',
         },
+<<<<<<< HEAD
 
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
 
+=======
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
         chart: {
           '1': 'hsl(var(--chart-1))',
           '2': 'hsl(var(--chart-2))',
@@ -83,7 +123,10 @@ export default {
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))',
         },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
         sidebar: {
           DEFAULT: 'hsl(var(--sidebar-background))',
           foreground: 'hsl(var(--sidebar-foreground))',
@@ -95,12 +138,16 @@ export default {
           ring: 'hsl(var(--sidebar-ring))',
         },
       },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+<<<<<<< HEAD
 
       /* ------------------------------
          KEYFRAMES
@@ -153,5 +200,31 @@ export default {
     },
   },
 
+=======
+      keyframes: {
+        'accordion-down': {
+          from: {
+            height: '0',
+          },
+          to: {
+            height: 'var(--radix-accordion-content-height)',
+          },
+        },
+        'accordion-up': {
+          from: {
+            height: 'var(--radix-accordion-content-height)',
+          },
+          to: {
+            height: '0',
+          },
+        },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+      },
+    },
+  },
+>>>>>>> 6452628f11dbbbea92fd12e01cda9034198962f3
   plugins: [require('tailwindcss-animate')],
 } satisfies Config;
